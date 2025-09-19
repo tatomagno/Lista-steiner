@@ -83,8 +83,8 @@
       </div>
     </div>
     <div class="toolbar" id="acciones">
-      <button class="btn btn-outline" id="btnSync">Sincronizar (leer)</button>
-      <button class="btn btn-outline" id="btnPublish">Publicar (guardar)</button>
+      <button class="btn btn-outline" id="btnSync" onclick="syncFromServer()">Sincronizar (leer)</button>
+      <button class="btn btn-outline" id="btnPublish" onclick="publishToServer()">Publicar (guardar)</button>
       <button class="btn btn-outline" id="btnBackup">Exportar datos</button>
       <label class="btn btn-outline" for="fileRestore" style="cursor:pointer">Importar datos</label>
       <input id="fileRestore" type="file" accept=".json,.csv" hidden />
@@ -341,6 +341,10 @@
 }
 document.getElementById('btnSync').addEventListener('click', syncFromServer);
 document.getElementById('btnPublish').addEventListener('click', publishToServer);
+window.syncFromServer = syncFromServer;
+window.publishToServer = publishToServer;
+
+  
   // ===== CARGA INICIAL: Sheets → data.json → local =====
   (async function init(){
     renderCombos(); renderTabla(); renderCliente(); updateStatus();
@@ -361,6 +365,7 @@ document.getElementById('btnPublish').addEventListener('click', publishToServer)
 </script>
 </body>
 </html>
+
 
 
 
