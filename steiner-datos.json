@@ -1,0 +1,788 @@
+{
+  "marcas": [
+    "EL ABASTO",
+    "DON YEYO",
+    "UN TAL QUE COCINA",
+    "JULICROC",
+    "CRACKET",
+    "CHOPPY",
+    "TIO LUCA",
+    "NOLEM",
+    "NÖTTER",
+    "RAMPAZZO",
+    "PELÍCANO",
+    "NÖTTER"
+  ],
+  "tipos": [
+    "PANIFICACION",
+    "COPETIN"
+  ],
+  "productos": [
+    {
+      "id": "r5ekq8i",
+      "nombre": "Pan de Viena x 6",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "e9o9e9d",
+      "nombre": "Pan de hamb x 4",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "ddf73ry",
+      "nombre": "Pan de Viena x 12",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "stuqnjc",
+      "nombre": "Pan de hamb x 12",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 2200,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "wpvtfwy",
+      "nombre": "Lactal BCO/salvado x 400 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "hty30u4",
+      "nombre": "Lactal BCO/salvado x 650 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 2000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "x0h34hc",
+      "nombre": "Lactal milticereal x 400 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 2000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "8rwrphr",
+      "nombre": "Pan de Miga x 240gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 2400,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "rfvu1bt",
+      "nombre": "Pizza simple x 280gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1400,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "k821pld",
+      "nombre": "Pizza doble x 400 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1800,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "jp47345",
+      "nombre": "Fugazza x 400 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 2000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "3c8szas",
+      "nombre": "Pizzeta x 180 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "l6otut0",
+      "nombre": "Chiqui pizzas x 6 unid",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "s1s0h52",
+      "nombre": "Marinas (blancas/cereal) x 140 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "h2c9fia",
+      "nombre": "Grisines x 180 grs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 1000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "gxwfgpq",
+      "nombre": "Bizcocho x 150 gs",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 800,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "k7swyn2",
+      "nombre": "Marinas x 1kg",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 4700,
+      "precioB": 4200,
+      "activo": true
+    },
+    {
+      "id": "26qypbt",
+      "nombre": "Grisines x 1kg",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 4500,
+      "precioB": 4000,
+      "activo": true
+    },
+    {
+      "id": "63683rx",
+      "nombre": "Bizcochosx 1kg",
+      "marca": "EL ABASTO",
+      "tipo": "PANIFICACION",
+      "precioA": 4500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "tmr3w8t",
+      "nombre": "Pan de Viena x 6",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 1350,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "s9gbh8d",
+      "nombre": "Pan de hamb c/sésamo x 4",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 1350,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "51z38ql",
+      "nombre": "Lomito C/sésamo x 4",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 1850,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "on4nsn4",
+      "nombre": "Lactal chico Mesa x 350gs",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 1850,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "qeee9pq",
+      "nombre": "Lactal chico c/leche x 360 gs",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 1950,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "dx87yb7",
+      "nombre": "Lactal chico salvado x 350 gs",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 1950,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "bjj9ia4",
+      "nombre": "Lactal familiar blanco x 600 gs",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 2900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "827371e",
+      "nombre": "Lactal fliar salvado x 6oo gs",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 2900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "4cjo4bt",
+      "nombre": "Lactal integral x 600 gs",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 2900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "s3ebyq9",
+      "nombre": "Lactal integral Multicereal x 400gs",
+      "marca": "DON YEYO",
+      "tipo": "PANIFICACION",
+      "precioA": 2450,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "81vvibr",
+      "nombre": "Pan hamb c/queso x 4",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 2000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "6y1r2d4",
+      "nombre": "Pan Viena c /queso x 6",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 2000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "m8qvzp9",
+      "nombre": "Pan sandwich (lomo) x 6",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 2900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "kpw04tr",
+      "nombre": "Chips c/queso x 12",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 3200,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "vijgkpz",
+      "nombre": "Pan de Viena Clásico x 6",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 1800,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "33l9lef",
+      "nombre": "Pan de hamb Clásico x 4",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 1800,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "moovuk8",
+      "nombre": "Pan de Lomito XXL (22cm) x 4 unid",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 2900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "nz29l3y",
+      "nombre": "Pan SUPER PANCHO c/queso x 5 unid",
+      "marca": "UN TAL QUE COCINA",
+      "tipo": "PANIFICACION",
+      "precioA": 2500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "ya130en",
+      "nombre": "Papas saborizadas x 70 gs x unidad",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 1250,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "sw5u5fg",
+      "nombre": "Papas saborizadas x caja (16 paquetes)",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 1150,
+      "precioB": 18400,
+      "activo": true
+    },
+    {
+      "id": "p4q4deq",
+      "nombre": "Chizitos x 65 gs x unidad",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 800,
+      "precioB": 750,
+      "activo": true
+    },
+    {
+      "id": "aq97uau",
+      "nombre": "Chizitos x caja (14 paquetes)",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 750,
+      "precioB": 10500,
+      "activo": true
+    },
+    {
+      "id": "spmbwtr",
+      "nombre": "Chizitos comunes x 1kg",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 4700,
+      "precioB": 4200,
+      "activo": true
+    },
+    {
+      "id": "dmtc0hd",
+      "nombre": "Chizitos pizza x 1kg",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 4700,
+      "precioB": 4200,
+      "activo": true
+    },
+    {
+      "id": "ej6upyp",
+      "nombre": "Chizitos jamón x 1kg",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 4700,
+      "precioB": 4200,
+      "activo": true
+    },
+    {
+      "id": "gas8t6f",
+      "nombre": "Papas clásicas x 70 gs x unidad",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 1200,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "4eld8a1",
+      "nombre": "Papas clásicas x caja (16 unid)",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 1100,
+      "precioB": 17600,
+      "activo": true
+    },
+    {
+      "id": "d35nqqi",
+      "nombre": "Aritos frutales x 150 gs x unidad",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "natfi5y",
+      "nombre": "Aritos frutales x caja cerrada",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 850,
+      "precioB": 11900,
+      "activo": true
+    },
+    {
+      "id": "bjt5j8d",
+      "nombre": "Bolitas de chocolate x 150 gs x unidad",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "pg90yna",
+      "nombre": "Bolitas de chocolate x caja cerrada",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 850,
+      "precioB": 11900,
+      "activo": true
+    },
+    {
+      "id": "81af8k2",
+      "nombre": "Batata frita x 90 gs x unidad",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 1250,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "9varwrx",
+      "nombre": "Batata frita x 90gs x caja cerrada",
+      "marca": "JULICROC",
+      "tipo": "COPETIN",
+      "precioA": 1150,
+      "precioB": 18400,
+      "activo": true
+    },
+    {
+      "id": "ddbuspy",
+      "nombre": "Papas clásicas o acanaladas x 1kg x unidad",
+      "marca": "CRACKET",
+      "tipo": "COPETIN",
+      "precioA": 0,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "qvtmf9d",
+      "nombre": "Papas clásicas o acanaladas x caja cerrada",
+      "marca": "CRACKET",
+      "tipo": "COPETIN",
+      "precioA": 9200,
+      "precioB": 36800,
+      "activo": true
+    },
+    {
+      "id": "bduz1ja",
+      "nombre": "Papas Pai x1kg",
+      "marca": "CRACKET",
+      "tipo": "COPETIN",
+      "precioA": 9800,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "y593uu8",
+      "nombre": "Maní salado x 120 gs x unidad",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "37tj8lz",
+      "nombre": "Maní salado x 120gs x bolson (10 unid)",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 850,
+      "precioB": 8500,
+      "activo": true
+    },
+    {
+      "id": "a5w463t",
+      "nombre": "Maní tostado x 150 gs por unidad",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "6tnfyly",
+      "nombre": "Maní tostado x 150 gs x bolson (10 unid)",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 850,
+      "precioB": 8500,
+      "activo": true
+    },
+    {
+      "id": "aa65bt7",
+      "nombre": "Palitos salados x 120 gs x unidad",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 750,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "9r9ip89",
+      "nombre": "Palitos salados x 120 gs x bolson",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 700,
+      "precioB": 7000,
+      "activo": true
+    },
+    {
+      "id": "8oorpc7",
+      "nombre": "Chizitos x 70 gs por unidad",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 700,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "g7r0w6z",
+      "nombre": "Chizitos x 70 gs x bolson",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 600,
+      "precioB": 6000,
+      "activo": true
+    },
+    {
+      "id": "uldqmzx",
+      "nombre": "Chizitos x 400 gs",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 3500,
+      "precioB": 3100,
+      "activo": true
+    },
+    {
+      "id": "fhtr5n3",
+      "nombre": "Papas clásicas o acanaladas x 1kg",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 11200,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "oylnh29",
+      "nombre": "Papas clásicas o acanaladas x 80gs por unidad",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 1300,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "ed5raix",
+      "nombre": "Papas clásicas o acanaladas x caja cerrada",
+      "marca": "CHOPPY",
+      "tipo": "COPETIN",
+      "precioA": 1200,
+      "precioB": 14400,
+      "activo": true
+    },
+    {
+      "id": "uh9ippu",
+      "nombre": "Palitos (salados",
+      "marca": "CHOPPY",
+      "tipo": "PANIFICACION",
+      "precioA": 750,
+      "precioB": 700,
+      "activo": false
+    },
+    {
+      "id": "awcw3zq",
+      "nombre": "Palitos saborizados x 115 gs",
+      "marca": "TIO LUCA",
+      "tipo": "COPETIN",
+      "precioA": 900,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "arl0ift",
+      "nombre": "Maní recubierto 1kg",
+      "marca": "TIO LUCA",
+      "tipo": "COPETIN",
+      "precioA": 5000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "fv92pct",
+      "nombre": "Alfajor maicena x 8 unidades",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 6500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "ntcb486",
+      "nombre": "Alfajor chocolate (BCO/negro) x 8 unidades",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 7000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "cgv07pk",
+      "nombre": "Pastafrolitas de membrillo o batata x 8 unidad",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 6500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "zyosw7n",
+      "nombre": "Cubanitos rellenos x 9 unidad",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 5000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "o6ll6uq",
+      "nombre": "Triples de chocolate x 6 unidades",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 6500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "on7uo1q",
+      "nombre": "Masitas de miel x 1kg",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 5500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "h1g06qz",
+      "nombre": "Pepas de membrillo o batata x 1kg",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 5500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "jbbdmyd",
+      "nombre": "Pepas de membrillo con semillas x 1kg",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 6000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "b4xu0iv",
+      "nombre": "Bizcochos de grasa x 1kg",
+      "marca": "NOLEM",
+      "tipo": "PANIFICACION",
+      "precioA": 4500,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "d735rr5",
+      "nombre": "Maní recubierto saborizados x caja cerrada (20 unidades)",
+      "marca": "NÖTTER",
+      "tipo": "COPETIN",
+      "precioA": 0,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "lb5egw4",
+      "nombre": "Alfajor santafesino x docena",
+      "marca": "RAMPAZZO",
+      "tipo": "PANIFICACION",
+      "precioA": 5500,
+      "precioB": 82500,
+      "activo": true
+    },
+    {
+      "id": "0rmcqi1",
+      "nombre": "Alfajor santafesino x doc x caja cerrada (15 unidades)",
+      "marca": "RAMPAZZO",
+      "tipo": "PANIFICACION",
+      "precioA": 6000,
+      "precioB": 0,
+      "activo": true
+    },
+    {
+      "id": "zungo02",
+      "nombre": "tortillas clásicas x 10 unid",
+      "marca": "PELÍCANO",
+      "tipo": "PANIFICACION",
+      "precioA": 1900,
+      "precioB": 34000,
+      "activo": true
+    },
+    {
+      "id": "spl39jt",
+      "nombre": "Tortillas integrales x 10 unid",
+      "marca": "PELÍCANO",
+      "tipo": "PANIFICACION",
+      "precioA": 1900,
+      "precioB": 34000,
+      "activo": true
+    },
+    {
+      "id": "a4h9ntp",
+      "nombre": "Tortillas light x10 unid",
+      "marca": "PELÍCANO",
+      "tipo": "PANIFICACION",
+      "precioA": 1900,
+      "precioB": 34000,
+      "activo": true
+    }
+  ],
+  "fechaActualizacion": "2025-09-18T21:20:53.194Z"
+}

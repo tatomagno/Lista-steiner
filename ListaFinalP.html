@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Steiner Distribuciones – Lista de precios</title>
+  <style>
+    :root{--bg:#f6f8fb;--card:#fff;--ink:#111827;--muted:#6b7280;--accent:#1e40af;--danger:#b91c1c;--line:#e5e7eb}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;background:var(--bg);color:var(--ink)}
+    header{padding:12px 16px;background:#0b2545;color:#fff;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    header .brand{display:flex;align-items:center;gap:12px}
+    header .brand img{width:44px;height:44px;border-radius:8px;object-fit:cover;background:#fff}
+    header h1{margin:0;font-size:20px;font-weight:800}
+    header small{opacity:.9}
+    main{padding:16px;max-width:1200px;margin:auto}
+
+    .grid{display:grid;gap:14px}
+    .cols-2{grid-template-columns:1fr 1fr}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+    .card h2{margin:0;font-size:16px;padding:12px 14px;border-bottom:1px solid var(--line)}
+    .card .content{padding:14px}
+
+    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+    input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .row>*{flex:1}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap}
+    .btn{appearance:none;border:none;border-radius:10px;padding:10px 12px;font-weight:600;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-outline{background:#fff;border:1px solid var(--line)}
+    .btn-danger{background:var(--danger);color:#fff}
+    .btn-small{padding:6px 8px;border-radius:8px;font-size:12px}
+
+    .status{font-size:12px;color:#e5e7eb;opacity:.85}
+
+    /* Tabla admin */
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
+    table{width:100%;border-collapse:collapse;background:#fff}
+    th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+    th{font-size:12px;color:var(--muted)}
+    tr:hover td{background:#fafafa}
+    .num{text-align:right}
+    .actions{white-space:nowrap}
+
+    /* Vista cliente / PDF */
+    #cliente{margin-top:18px}
+    #cliente .paper{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;overflow:hidden}
+    #cliente .paper::before{content:"";position:absolute;inset:0;background:url('logo.jpg') center/70% no-repeat;opacity:.06;pointer-events:none}
+    #cliente .paper .content{position:relative;z-index:1}
+    #cliente h3{margin:0 0 8px 0;font-size:20px}
+    #cliente small{color:var(--muted)}
+    .marca-header{font-weight:700;border-top:2px solid #111;padding-top:14px;background:#fff}
+
+    /* Responsive móvil */
+    @media (max-width: 720px){
+      #acciones{width:100%}
+      #acciones .btn, #acciones label.btn{flex:1 1 100%; width:100%}
+      .cols-2{grid-template-columns:1fr}
+      .table-wrap{border-radius:10px}
+      th:nth-child(6){width:120px}
+    }
+
+    /* PRINT */
+    @media print {
+      body{background:#fff}
+      #admin, #acciones{display:none !important}
+      header{background:#fff;color:#000;border-bottom:1px solid #ddd}
+      #cliente{margin:0}
+      #cliente .paper{border:none;border-radius:0;padding:0}
+      #cliente table{font-size:12px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="logo.jpg" alt="Logo Steiner" />
+      <div>
+        <h1>Steiner Distribuciones</h1>
+        <small>Lista de precios – mantenimiento</small>
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+    <div class="toolbar" id="acciones">
+      <button class="btn btn-outline" id="btnSync">Sincronizar (leer)</button>
+      <button class="btn btn-outline" id="btnPublish">Publicar (guardar)</button>
+      <button class="btn btn-outline" id="btnBackup">Exportar datos</button>
+      <label class="btn btn-outline" for="fileRestore" style="cursor:pointer">Importar datos</label>
+      <input id="fileRestore" type="file" accept=".json,.csv" hidden />
+      <button class="btn btn-primary" id="btnImprimir">Imprimir listado de precios</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="admin" class="grid cols-2">
+      <div class="card">
+        <h2>Filtros</h2>
+        <div class="content row">
+          <div>
+            <label>Filtrar por MARCA</label>
+            <select id="filtroMarca"></select>
+          </div>
+          <div>
+            <label>Filtrar por tipo</label>
+            <select id="filtroTipo"></select>
+          </div>
+          <div style="flex:0 0 100%"></div>
+          <button class="btn btn-outline" id="btnLimpiarFiltros">Limpiar filtros</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Marcas y tipos</h2>
+        <div class="content row">
+          <div>
+            <label>Nueva MARCA</label>
+            <input id="inpMarca" placeholder="Ej: RAMPAZZO" />
+          </div>
+          <div style="flex:0 0 140px;align-self:end"><button class="btn btn-primary" id="btnAddMarca">Agregar</button></div>
+          <div>
+            <label>Renombrar MARCA</label>
+            <div class="row">
+              <select id="marcaEditar"></select>
+              <input id="marcaNuevo" placeholder="Nuevo nombre" />
+              <div style="flex:0 0 140px;align-self:end"><button class="btn btn-outline" id="btnRenombrarMarca">Renombrar</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="grid-column:1/-1">
+        <h2>Productos</h2>
+        <div class="content">
+          <div class="row" style="margin-bottom:10px">
+            <div><label>Producto</label><input id="p_nombre" placeholder="Ej: Pan de Viena x 6"/></div>
+            <div><label>MARCA</label><select id="p_marca"></select></div>
+            <div><label>Tipo</label><select id="p_tipo"></select></div>
+            <div><label>Precio por Unidad</label><input id="p_precioA" type="number" min="0" step="0.01"/></div>
+            <div><label>Precio por Cantidad</label><input id="p_precioB" type="number" min="0" step="0.01"/></div>
+            <div style="flex:0 0 160px;align-self:end"><button class="btn btn-primary" id="btnAgregarProducto">Agregar producto</button></div>
+          </div>
+
+          <div class="table-wrap">
+            <table id="tabla">
+              <thead>
+                <tr>
+                  <th>Producto (editable)</th>
+                  <th>MARCA</th>
+                  <th>Tipo</th>
+                  <th class="num">Precio por Unidad</th>
+                  <th class="num">Precio por Cantidad</th>
+                  <th class="actions">Acciones</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cliente">
+      <div class="paper">
+        <div class="content">
+          <h3>Steiner Distribuciones – Lista para cliente</h3>
+          <small id="lblFecha">Actualizado: —</small>
+          <table>
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>MARCA</th>
+                <th class="num">Precio por Unidad</th>
+                <th class="num">Precio por Cantidad</th>
+              </tr>
+            </thead>
+            <tbody id="tablaCliente"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script>
+(()=>{
+  // ===== CONFIG API (Google Apps Script Web App) =====
+  const API='https://script.google.com/macros/s/AKfycbzAoFCbJxjwypa_GyLu7RUidUetQSEKjjw9070Seqq32WepUb_1v9ItQkL_8GcadrHp/exec';
+
+  const KEY='steiner_v6';
+  const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
+  let state=load()||seed();
+
+  function save(){localStorage.setItem(KEY, JSON.stringify(state)); updateStatus();}
+  function load(){try{return JSON.parse(localStorage.getItem(KEY));}catch(_){return null}}
+  function seed(){const s={marcas:['RAMPAZZO','PELÍCANO','JULICROC'],tipos:['PANIFICACIÓN','COPETÍN'],productos:[],fechaActualizacion:null};localStorage.setItem(KEY,JSON.stringify(s));return s}
+  const uid=()=>Math.random().toString(36).slice(2,9);
+  const money=n=>Number(n).toLocaleString('es-AR',{minimumFractionDigits:0,maximumFractionDigits:2});
+  const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+
+  function updateStatus(){
+    const f=state.fechaActualizacion? new Date(state.fechaActualizacion).toLocaleString('es-AR'): '—';
+    $('#status').textContent = `Última act.: ${f}`;
+  }
+
+  // ---------- Import helpers (JSON/CSV y JSON Employees) ----------
+  function normalizeAnyJSON(raw){
+    if(raw && Array.isArray(raw.productos)){
+      const productos=raw.productos.map(r=>({id:r.id||uid(),nombre:r.nombre,marca:r.marca||r.proveedor||'',tipo:r.tipo||'',precioA:Number(r.precioA||0),precioB:Number(r.precioB||0),activo:r.activo!==false}));
+      const marcas=raw.marcas||raw.proveedores||[...new Set(productos.map(p=>p.marca).filter(Boolean))];
+      const tipos=raw.tipos||[...new Set(productos.map(p=>p.tipo).filter(Boolean))];
+      return {marcas,tipos,productos,fechaActualizacion:new Date().toISOString()};
+    }
+    if(raw && raw.Employees && Array.isArray(raw.Employees.Employee)){
+      const rows=raw.Employees.Employee.map(o=>Object.values(o)[0]).filter(Boolean).map(s=>String(s).replace(/\r/g,'').trim());
+      const csv=['nombre;marca;tipo;precioA;precioB;activo',...rows.map(line=>line.replace(';proveedor;',';marca;'))].join('\n');
+      return fromCSV(csv);
+    }
+    throw new Error('Estructura JSON no reconocida');
+  }
+  function fromCSV(text){
+    const lines=text.split(/\r?\n/).filter(l=>l.trim().length);
+    const delim=lines[0].includes(';')?';':',';
+    const head=lines[0].toLowerCase().split(delim).map(s=>s.trim());
+    const idx=k=>head.findIndex(h=>h.startsWith(k));
+    const iNombre=idx('nombre'), iMarca=(idx('marca')>=0?idx('marca'):idx('proveedor')), iTipo=idx('tipo'), iA=idx('precioa'), iB=idx('preciob'), iAct=idx('activo');
+    const productos=lines.slice(1).map(l=>{const c=l.split(delim).map(s=>s.trim()); if(!c[iNombre]) return null; return {id:uid(),nombre:c[iNombre]||'',marca:c[iMarca]||'',tipo:c[iTipo]||'',precioA:Number((c[iA]||'0').replace(',','.')),precioB:Number((c[iB]||'0').replace(',','.')),activo:String(c[iAct]??'true').toLowerCase().startsWith('t')}}).filter(Boolean);
+    const marcas=[...new Set(productos.map(p=>p.marca).filter(Boolean))];
+    const tipos=[...new Set(productos.map(p=>p.tipo).filter(Boolean))];
+    return {marcas,tipos,productos,fechaActualizacion:new Date().toISOString()};
+  }
+
+  // ---------- Render combos ----------
+  function renderCombos(){
+    $('#filtroMarca').innerHTML=['(todas)',...state.marcas].map(m=>`<option>${m}</option>`).join('');
+    $('#filtroTipo').innerHTML=['(todos)',...state.tipos].map(t=>`<option>${t}</option>`).join('');
+    $('#p_marca').innerHTML=state.marcas.map(m=>`<option>${m}</option>`).join('');
+    $('#p_tipo').innerHTML=state.tipos.map(t=>`<option>${t}</option>`).join('');
+    $('#marcaEditar').innerHTML=state.marcas.map(m=>`<option>${m}</option>`).join('');
+  }
+
+  // ---------- Tabla admin (edición en celda) ----------
+  function rowHTML(p){
+    return `<tr data-id="${p.id}">
+      <td><input class="cel nombre" value="${esc(p.nombre)}"/></td>
+      <td><select class="cel marca">${state.marcas.map(m=>`<option ${m===p.marca?'selected':''}>${m}</option>`).join('')}</select></td>
+      <td><select class="cel tipo">${state.tipos.map(t=>`<option ${t===p.tipo?'selected':''}>${t}</option>`).join('')}</select></td>
+      <td class="num"><input class="cel a" type="number" min="0" step="0.01" value="${p.precioA}"></td>
+      <td class="num"><input class="cel b" type="number" min="0" step="0.01" value="${p.precioB}"></td>
+      <td class="actions"><button class="btn btn-small btn-danger actBorrar">Quitar</button></td>
+    </tr>`
+  }
+  function renderTabla(){
+    const tb=$('#tabla tbody');
+    const marca=$('#filtroMarca').value, tipo=$('#filtroTipo').value;
+    const rows=state.productos.filter(x=>x.activo)
+      .filter(x=>marca==='(todas)'||!marca||x.marca===marca)
+      .filter(x=>tipo==='(todos)'||!tipo||x.tipo===tipo)
+      .sort((a,b)=>a.nombre.localeCompare(b.nombre))
+      .map(rowHTML).join('');
+    tb.innerHTML=rows||`<tr><td colspan="6">No hay productos con el filtro seleccionado.</td></tr>`;
+
+    // autosave en blur/Enter
+    $$('#tabla input.cel, #tabla select.cel').forEach(el=>{
+      const saveField=()=>{
+        const tr=el.closest('tr'); const id=tr.dataset.id; const p=state.productos.find(x=>x.id===id);
+        if(!p) return;
+        p.nombre=tr.querySelector('input.nombre').value.trim();
+        p.marca=tr.querySelector('select.marca').value;
+        p.tipo=tr.querySelector('select.tipo').value;
+        p.precioA=Number(tr.querySelector('input.a').value||0);
+        p.precioB=Number(tr.querySelector('input.b').value||0);
+        state.fechaActualizacion=new Date().toISOString();
+        save(); renderCliente();
+      };
+      el.addEventListener('blur', saveField);
+      el.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); el.blur(); }});
+    });
+
+    $$('#tabla .actBorrar').forEach(btn=>btn.addEventListener('click',e=>{
+      const tr=e.target.closest('tr'); const id=tr.dataset.id; const p=state.productos.find(x=>x.id===id);
+      if(confirm(`¿Quitar "${p.nombre}" de la lista?`)){ p.activo=false; state.fechaActualizacion=new Date().toISOString(); save(); renderTabla(); renderCliente(); }
+    }));
+  }
+
+  // ---------- Vista cliente (agrupada por MARCA) ----------
+  function renderCliente(){
+    const tb=$('#tablaCliente');
+    const activos=state.productos.filter(x=>x.activo).sort((a,b)=>a.marca.localeCompare(b.marca)||a.nombre.localeCompare(b.nombre));
+    let html=''; let cur=null;
+    for(const p of activos){
+      if(p.marca!==cur){ cur=p.marca; html+=`<tr><td class="marca-header" colspan="4">${esc(cur)}</td></tr>`; }
+      html+=`<tr><td>${esc(p.nombre)}</td><td>${esc(p.marca)}</td><td class="num">${money(p.precioA)}</td><td class="num">${money(p.precioB)}</td></tr>`;
+    }
+    tb.innerHTML=html||'<tr><td colspan="4">Sin productos.</td></tr>';
+    $('#lblFecha').textContent='Actualizado: '+(state.fechaActualizacion? new Date(state.fechaActualizacion).toLocaleString('es-AR') : '—');
+  }
+
+  // ---------- Acciones básicas ----------
+  $('#btnAddMarca').addEventListener('click',()=>{ const v=($('#inpMarca').value||'').trim(); if(!v) return; if(!state.marcas.includes(v)) state.marcas.push(v); $('#inpMarca').value=''; state.fechaActualizacion=new Date().toISOString(); save(); renderCombos(); renderTabla(); });
+  $('#btnRenombrarMarca').addEventListener('click',()=>{ const sel=$('#marcaEditar').value; const nuevo=($('#marcaNuevo').value||'').trim(); if(!sel||!nuevo) return alert('Elegí una marca y el nuevo nombre.'); if(sel===nuevo) return; state.marcas=state.marcas.map(m=>m===sel?nuevo:m); state.productos.forEach(p=>{if(p.marca===sel)p.marca=nuevo}); state.fechaActualizacion=new Date().toISOString(); $('#marcaNuevo').value=''; save(); renderCombos(); renderTabla(); renderCliente(); });
+  $('#btnAgregarProducto').addEventListener('click',()=>{ const nombre=($('#p_nombre').value||'').trim(); if(!nombre) return alert('Ingresá un nombre.'); const marca=$('#p_marca').value, tipo=$('#p_tipo').value; const A=Number($('#p_precioA').value||0), B=Number($('#p_precioB').value||0); state.productos.push({id:uid(),nombre,marca,tipo,precioA:A,precioB:B,activo:true}); state.fechaActualizacion=new Date().toISOString(); $('#p_nombre').value=''; $('#p_precioA').value=''; $('#p_precioB').value=''; save(); renderTabla(); renderCliente(); });
+  $('#filtroMarca').addEventListener('change',renderTabla); $('#filtroTipo').addEventListener('change',renderTabla); $('#btnLimpiarFiltros').addEventListener('click',()=>{ $('#filtroMarca').selectedIndex=0; $('#filtroTipo').selectedIndex=0; renderTabla(); });
+
+  // Export / Import con mensajes claras
+  $('#btnBackup').addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='steiner-datos.json'; a.click(); });
+  $('#fileRestore').addEventListener('change', async e=>{ const f=e.target.files[0]; if(!f) return; const text=await f.text(); try{ let data; if(f.name.toLowerCase().endsWith('.csv')){ data=fromCSV(text); } else { const raw=JSON.parse(text); data=normalizeAnyJSON(raw);} state=data; save(); renderCombos(); renderTabla(); renderCliente(); alert('✅ Archivo importado correctamente.'); }catch(err){ console.error(err); alert('⚠️ No se pudo reconocer el archivo. Acepta JSON (productos o Employees) o CSV con columnas: nombre, marca/proveedor, tipo, precioA, precioB, activo.'); }});
+
+  // Impresión con confirmación
+  $('#btnImprimir').addEventListener('click',()=>{ if(!confirm('¿CONFIRMÁ que los precios están ACTUALIZADOS?')) return; if(!state.fechaActualizacion) state.fechaActualizacion=new Date().toISOString(); save(); renderCliente(); window.print(); });
+
+  // ====== SYNC con Google Sheets (usa API) ======
+  async function syncFromServer(){
+    try{
+      const res = await fetch(API, { method:'GET', cache:'no-store' });
+      if(!res.ok) throw new Error('GET failed');
+      const data = await res.json();
+      state = data; save(); renderCombos(); renderTabla(); renderCliente();
+      alert('✅ Datos sincronizados desde Google Sheets.');
+    }catch(err){ console.error(err); alert('⚠️ No se pudo leer del servidor. Verificá permisos del Web App y que la URL termine en /exec.'); }
+  }
+  async function publishToServer(){
+    if(!confirm('¿Subir esta lista al servidor para que todos la vean?')) return;
+    try{
+      const body = { productos: state.productos.filter(p=>p.activo), marcas: state.marcas, tipos: state.tipos };
+      const res = await fetch(API, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+      if(!res.ok) throw new Error('POST failed');
+      const r = await res.json();
+      alert('✅ Publicado. Filas guardadas: ' + (r.count ?? '?'));
+    }catch(err){ console.error(err); alert('⚠️ No se pudo publicar al servidor. Revisá el despliegue del Apps Script y que el acceso sea "Anyone".'); }
+  }
+  $('#btnSync').addEventListener('click', syncFromServer);
+  $('#btnPublish').addEventListener('click', publishToServer);
+
+  // ===== CARGA INICIAL: Sheets → data.json → local =====
+  (async function init(){
+    renderCombos(); renderTabla(); renderCliente(); updateStatus();
+    // 1) Sheets
+    try{
+      const res = await fetch(API, {method:'GET', cache:'no-store'});
+      if(res.ok){ const data = await res.json(); state = data; save(); renderCombos(); renderTabla(); renderCliente(); document.getElementById('status').textContent += '  | Fuente: Sheets'; return; }
+    }catch(_){ }
+    // 2) data.json
+    try{
+      const r2 = await fetch('data.json', {cache:'no-store'});
+      if(r2.ok){ const raw = await r2.json(); state = normalizeAnyJSON(raw); save(); renderCombos(); renderTabla(); renderCliente(); document.getElementById('status').textContent += '  | Fuente: data.json'; return; }
+    }catch(_){ }
+    // 3) localStorage
+    document.getElementById('status').textContent += '  | Fuente: local';
+  })();
+})();
+</script>
+</body>
+</html>
