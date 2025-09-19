@@ -184,7 +184,7 @@
 <script>
 (()=>{
   // ===== CONFIG API (Google Apps Script Web App) =====
-  const API='https://script.google.com/macros/s/AKfycbwcrHO1YP5BHaTKmB1Mhv08u-_dGWX47q1yolSwxbXwsbdN3qaNrQc-9eO7gq-6shiDVw/exec';
+  const API='https://script.google.com/macros/s/AKfycbzB40M0md7t2R8BbQEriuSpwGavh1ZAn7YvvPm1dJuBTq2saRUTO-Ih6SwNqjfU8Bc4tA/exec';
 
   const KEY='steiner_v6';
   const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
@@ -339,7 +339,8 @@
     alert('⚠️ Error al publicar: ' + err.message);
   }
 }
-
+document.getElementById('btnSync').addEventListener('click', syncFromServer);
+document.getElementById('btnPublish').addEventListener('click', publishToServer);
   // ===== CARGA INICIAL: Sheets → data.json → local =====
   (async function init(){
     renderCombos(); renderTabla(); renderCliente(); updateStatus();
@@ -360,6 +361,7 @@
 </script>
 </body>
 </html>
+
 
 
 
