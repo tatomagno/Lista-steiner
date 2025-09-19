@@ -319,17 +319,26 @@
     }catch(err){ console.error(err); alert('⚠️ No se pudo leer del servidor. Verificá permisos del Web App y que la URL termine en /exec.'); }
   }
   async function publishToServer(){
-    if(!confirm('¿Subir esta lista al servidor para que todos la vean?')) return;
-    try{
-      const body = { productos: state.productos.filter(p=>p.activo), marcas: state.marcas, tipos: state.tipos };
-      const res = await fetch(API, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
-      if(!res.ok) throw new Error('POST failed');
-      const r = await res.json();
-      alert('✅ Publicado. Filas guardadas: ' + (r.count ?? '?'));
-    }catch(err){ console.error(err); alert('⚠️ No se pudo publicar al servidor. Revisá el despliegue del Apps Script y que el acceso sea "Anyone".'); }
+  if(!confirm('¿Subir esta lista al servidor para que todos la vean?')) return;
+  try{
+    const body = { productos: state.productos.filter(p=>p.activo), marcas: state.marcas, tipos: state.tipos };
+
+    // Enviar como formulario para evitar CORS/preflight
+    const form = new URLSearchParams();
+    form.append('data', JSON.stringify(body));
+
+    const res = await fetch(API, { method: 'POST', body: form }); // sin headers
+    if(!res.ok){
+      const txt = await res.text().catch(()=> '');
+      throw new Error(`POST ${res.status} ${res.statusText} – ${txt.slice(0,200)}...`);
+    }
+    const r = await res.json().catch(()=> ({}));
+    alert('✅ Publicado. Filas guardadas: ' + (r.count ?? '?'));
+  }catch(err){
+    console.error(err);
+    alert('⚠️ Error al publicar: ' + err.message);
   }
-  $('#btnSync').addEventListener('click', syncFromServer);
-  $('#btnPublish').addEventListener('click', publishToServer);
+}
 
   // ===== CARGA INICIAL: Sheets → data.json → local =====
   (async function init(){
@@ -351,4 +360,5 @@
 </script>
 </body>
 </html>
+
 
